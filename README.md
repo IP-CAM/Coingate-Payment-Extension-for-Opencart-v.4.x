@@ -2,7 +2,7 @@
 
 ## Usage
 
-- Download the 'coingate.ocmod.zip'
+- Download 'coingate.ocmod.zip'
 - Upload it via extension installer
 - Go to extensions > payments
-- Enabled Coingate
+- Enable Coingate
