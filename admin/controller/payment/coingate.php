@@ -94,7 +94,10 @@ class Coingate extends Controller
 
     private function validate(): bool
     {
-        if (!$this->user->hasPermission('modify', 'extension/payment/coingate')) {
+        if (
+            !$this->user->hasPermission('modify', 'extension/coingate/payment/coingate') &&
+            !$this->user->hasPermission('modify', 'extension/payment/coingate')
+        ) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
