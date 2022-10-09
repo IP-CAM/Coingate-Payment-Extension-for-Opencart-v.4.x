@@ -69,6 +69,10 @@ class Coingate extends Controller
             }
         }
 
+        if (strlen($data['payment_coingate_prefill_coingate_invoice_email']) === 0) {
+            $data['payment_coingate_prefill_coingate_invoice_email'] = 1;
+        }
+
         $data['payment_coingate_sort_order'] = $this->request->post['payment_coingate_sort_order'] ?? $this->config->get('payment_coingate_sort_order');
 
         if (empty($data['payment_coingate_api_auth_token']) && !empty($data['payment_coingate_api_secret']))
@@ -106,12 +110,16 @@ class Coingate extends Controller
         }
 
         if (!$this->error) {
-            $result = Client::testConnection(
-                $this->request->post['payment_coingate_api_auth_token'],
-                $this->request->post['payment_coingate_test_mode'] == 1
-            );
+            try {
+                $result = Client::testConnection(
+                    $this->request->post['payment_coingate_api_auth_token'],
+                    $this->request->post['payment_coingate_test_mode'] == 1
+                );
 
-            if (!$result) {
+                if (!$result) {
+                    $this->error['warning'] = $this->language->get('error_connection');
+                }
+            } catch (\Exception $e) {
                 $this->error['warning'] = $this->language->get('error_connection');
             }
         }
@@ -139,7 +147,8 @@ class Coingate extends Controller
             'payment_coingate_total',
             'payment_coingate_geo_zone_id',
             'payment_coingate_receive_currency',
-            'payment_coingate_test_mode'
+            'payment_coingate_test_mode',
+            'payment_coingate_prefill_coingate_invoice_email'
         ];
     }
 

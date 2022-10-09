@@ -257,6 +257,27 @@
                             </select>
                         </div>
                     </div>
+                    {# payment_coingate_prefill_coingate_invoice_email, enabled or disabled, default enabled #}
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="input-prefill-coingate-invoice-email"><span
+                                    data-toggle="tooltip"
+                                    title="{{ help_prefill_coingate_invoice_email }}">{{ entry_prefill_coingate_invoice_email }}</span></label>
+                        <div class="col-sm-10">
+                            <select name="payment_coingate_prefill_coingate_invoice_email" id="input-prefill-coingate-invoice-email"
+                                    class="form-select">
+                                {% if payment_coingate_prefill_coingate_invoice_email == '1' %}
+                                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                                    <option value="0">{{ text_disabled }}</option>
+                                {% else %}
+                                    <option value="1">{{ text_enabled }}</option>
+                                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                                {% endif %}
+                            </select>
+
+                            <div class="alert alert-info mt-2">{{ help_prefill_coingate_invoice_email }}</div>
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="input-sort-order">{{ entry_sort_order }}</label>
                         <div class="col-sm-10">

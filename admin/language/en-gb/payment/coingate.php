@@ -24,6 +24,8 @@ $_['entry_expired_status'] = 'Expired Status';
 $_['entry_canceled_status'] = 'Canceled Status';
 $_['entry_refunded_status'] = 'Refunded Status';
 $_['entry_sort_order'] = 'Sort Order';
+$_['entry_prefill_coingate_invoice_email'] = 'Prefill CoinGate Invoice Email';
+$_['help_prefill_coingate_invoice_email'] = 'When enabled, the customer\'s email will be passed to CoinGate\'s checkout form automatically. <br><br> Email will be used to contact customers by the CoinGate team if any payment issues arise.';
 
 $_['help_total'] = 'The checkout total the order must reach before this payment method becomes active.';
 $_['help_receive_currency'] = 'Currency you want to receive when making withdrawal at CoinGate. Please take a note what if you choose EUR or USD you will be asked to verify your business before making a withdrawal at CoinGate.';

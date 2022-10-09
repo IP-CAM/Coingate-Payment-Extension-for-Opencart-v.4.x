@@ -64,6 +64,10 @@ class Coingate extends Controller
             'token' => $token
         ];
 
+        if ($this->config->get('payment_coingate_prefill_coingate_invoice_email')) {
+            $params['purchaser_email'] = $order_info['email'];
+        }
+
         $cg_order = $client->order->create($params);
 
         if ($cg_order) {
